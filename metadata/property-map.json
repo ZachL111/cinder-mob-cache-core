@@ -1,0 +1,28 @@
+{
+  "repo": "cinder-mob-cache-core",
+  "language": "Go",
+  "category": "Mobile workflows",
+  "goal": "Create a Go reference implementation for cache workflows, centered on resource planning, capacity fixtures, and allocation and spill reports.",
+  "weights": {
+    "signal": 2,
+    "slack": 2,
+    "confidence": 1,
+    "drag": 5
+  },
+  "thresholds": {
+    "ship": 201,
+    "watch": 128
+  },
+  "properties": [
+    "raising signal cannot reduce score",
+    "raising drag cannot improve score",
+    "lane labels must match configured thresholds",
+    "golden fixture ids must remain unique"
+  ],
+  "fixture_files": [
+    "fixtures/golden/scoreboard.csv",
+    "fixtures/golden/lane-matrix.csv",
+    "fixtures/fuzz/mutations.csv",
+    "fixtures/fuzz/boundary-cases.jsonl"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "repo": "cinder-mob-cache-core",
+  "thresholds": {
+    "signal": 2,
+    "slack": 2,
+    "confidence": 1,
+    "drag": 5,
+    "ship": 201,
+    "watch": 128
+  },
+  "terms": [
+    "form pressure",
+    "sync drift",
+    "local state",
+    "conflict cost"
+  ]
+}
