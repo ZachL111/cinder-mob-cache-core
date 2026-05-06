@@ -1,0 +1,73 @@
+{
+  "repo": "cinder-mob-cache-core",
+  "language": "Go",
+  "category": "Mobile workflows",
+  "goal": "Create a Go reference implementation for cache workflows, centered on resource planning, capacity fixtures, and allocation and spill reports.",
+  "review_model": {
+    "terms": [
+      "form pressure",
+      "sync drift",
+      "local state",
+      "conflict cost"
+    ],
+    "lanes": [
+      "ship",
+      "watch",
+      "hold"
+    ],
+    "score": "signal * 2 + slack + confidence - drag * 3",
+    "purpose": "surface the domain-specific cases that need the most careful review"
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "focus": "form pressure",
+      "signal": 70,
+      "slack": 30,
+      "drag": 28,
+      "confidence": 80,
+      "score": 166,
+      "lane": "ship"
+    },
+    {
+      "name": "stress",
+      "focus": "sync drift",
+      "signal": 51,
+      "slack": 42,
+      "drag": 28,
+      "confidence": 66,
+      "score": 126,
+      "lane": "watch"
+    },
+    {
+      "name": "edge",
+      "focus": "local state",
+      "signal": 57,
+      "slack": 21,
+      "drag": 25,
+      "confidence": 87,
+      "score": 147,
+      "lane": "ship"
+    },
+    {
+      "name": "recovery",
+      "focus": "conflict cost",
+      "signal": 55,
+      "slack": 20,
+      "drag": 28,
+      "confidence": 55,
+      "score": 101,
+      "lane": "hold"
+    },
+    {
+      "name": "stale",
+      "focus": "form pressure",
+      "signal": 52,
+      "slack": 50,
+      "drag": 13,
+      "confidence": 85,
+      "score": 200,
+      "lane": "ship"
+    }
+  ]
+}

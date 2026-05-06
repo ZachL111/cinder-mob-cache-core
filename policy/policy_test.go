@@ -3,13 +3,25 @@ package policy
 import "testing"
 
 func TestFixtureDecisions(t *testing.T) {
-	signal := Signal{Demand: 88, Capacity: 93, Latency: 10, Risk: 14, Weight: 8}
-	if got := Score(signal); got != 171 { t.Fatalf("score = %d", got) }
-	if got := Classify(signal); got != "review" { t.Fatalf("decision = %s", got) }
-	signal := Signal{Demand: 80, Capacity: 85, Latency: 16, Risk: 25, Weight: 7}
-	if got := Score(signal); got != 41 { t.Fatalf("score = %d", got) }
-	if got := Classify(signal); got != "review" { t.Fatalf("decision = %s", got) }
-	signal := Signal{Demand: 92, Capacity: 101, Latency: 22, Risk: 23, Weight: 5}
-	if got := Score(signal); got != 61 { t.Fatalf("score = %d", got) }
-	if got := Classify(signal); got != "review" { t.Fatalf("decision = %s", got) }
+	tests := []struct {
+		name         string
+		signal       Signal
+		wantScore    int
+		wantDecision string
+	}{
+		{name: "case_1", signal: Signal{Demand: 88, Capacity: 93, Latency: 10, Risk: 14, Weight: 8}, wantScore: 171, wantDecision: "review"},
+		{name: "case_2", signal: Signal{Demand: 80, Capacity: 85, Latency: 16, Risk: 25, Weight: 7}, wantScore: 41, wantDecision: "review"},
+		{name: "case_3", signal: Signal{Demand: 92, Capacity: 101, Latency: 22, Risk: 23, Weight: 5}, wantScore: 61, wantDecision: "review"},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := Score(tc.signal); got != tc.wantScore {
+				t.Fatalf("score = %d, want %d", got, tc.wantScore)
+			}
+			if got := Classify(tc.signal); got != tc.wantDecision {
+				t.Fatalf("decision = %s, want %s", got, tc.wantDecision)
+			}
+		})
+	}
 }
